@@ -1,6 +1,5 @@
  // Reference Code , Only Length, Wala pa na bungkag
 
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, SafeAreaView, ImageBackground, TouchableOpacity, Linking, ScrollView } from 'react-native';
 import { Feather, FontAwesome } from '@expo/vector-icons';
