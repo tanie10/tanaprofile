@@ -1,17 +1,22 @@
-// screens/HomeScreen.js
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Text, Button } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
-import styles from '../styles/HomePageStyle';
+import React from "react";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { View, Text } from "react-native";
+import DrawerPage from "../screens/DrawerPage";
+
+const Drawer = createDrawerNavigator();
 
 export default function HomePage() {
-  const navigation = useNavigation();
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to Home</Text>
-      <Button onPress={() => navigation.navigate('Login')}>Logout</Button>
+    <Drawer.Navigator drawerContent={(props) => <DrawerPage {...props} />}>
+      <Drawer.Screen name="MainScreen" component={MainScreen} />
+    </Drawer.Navigator>
+  );
+}
+
+function MainScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Welcome to the Main Screen!</Text>
     </View>
   );
 }
