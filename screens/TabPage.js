@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { View, Text } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,10 +13,18 @@ function HomeScreen() {
   );
 }
 
-function SettingsScreen() {
+function CalendarScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings Screen</Text>
+      <Text>Calendar Screen</Text>
+    </View>
+  );
+}
+
+function SearchScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Search Screen</Text>
     </View>
   );
 }
@@ -30,18 +38,24 @@ export default function TabPage() {
 
           if (route.name === "Home") {
             iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "Settings") {
-            iconName = focused ? "settings" : "settings-outline";
+          } else if (route.name === "Calendar") {
+            iconName = focused ? "calendar" : "calendar-outline";
+          } else if (route.name === "Search") {
+            iconName = focused ? "search" : "search-outline";
           }
 
+          // Return the appropriate icon
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "tomato",
+        tabBarActiveTintColor: "blue",
         tabBarInactiveTintColor: "gray",
+        tabBarStyle: { paddingBottom: 5, height: 60 },
+        tabBarLabelStyle: { fontSize: 12 },
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Calendar" component={CalendarScreen} />
+      <Tab.Screen name="Search" component={SearchScreen} />
     </Tab.Navigator>
   );
 }
